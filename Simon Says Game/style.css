@@ -31,3 +31,9 @@ body{
 .userFlash{
     background-color : rgba(201, 211, 204, 0.808);
 }
+.greenFlash{
+    background-color: rgba(181, 236, 181, 0.836);
+}
+.looseFlash{
+    background-color: rgba(237, 193, 193, 0.961);
+}
