@@ -8,6 +8,8 @@ let colors = ["red", "green", "yellow", "blue"];
 let h2 = document.querySelector("h2");
 
 document.addEventListener("keypress", function(){
+    let body = document.querySelector("body");
+    body.classList.remove("looseFlash");
     if(started == false){
         started = true;
         levelUp();
@@ -18,7 +20,7 @@ function btnFlash(btn){
     btn.classList.add("flash");
     setTimeout(function(){
         btn.classList.remove("flash");
-    },300);
+    },350);
 }
 
 function userFlash(btn){
@@ -29,6 +31,7 @@ function userFlash(btn){
 }
 
 function levelUp(){
+    levelUpFlash();
     userSeq = [];
     level++;
     h2.innerText = `Level ${level}`;
@@ -38,6 +41,13 @@ function levelUp(){
     let randBtn = document.querySelector(`.${randColor}`);
     btnFlash(randBtn);
     gameSeq.push(randColor);
+}
+function levelUpFlash(){
+    let body = document.querySelector("body");
+    body.classList.add("greenFlash");
+    // setTimeout(function(){
+    //     body.classList.remove("greenFlash");
+    // }, 250);
 }
 
 let btns = document.querySelectorAll(".box");
@@ -60,7 +70,12 @@ function checkAns(indx){
     else{
         h2.innerHTML = `Game is Over..! At level-${level} <br> Press any key to continue`;
         resetGame();
+        looseFlash();
     }
+}
+function looseFlash(){
+    let body = document.querySelector("body");
+    body.classList.add("looseFlash");
 }
 function resetGame(){
     userSeq = [];
